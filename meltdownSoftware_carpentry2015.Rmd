@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+author: "Vanessa"
+date: "Sunday, October 04, 2015"
+output: word_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+Figure 1
+
+```{r, echo=F}
+plot(cars)
+data1 <- read.table(file= "~/software-carpentry-october-2015/output/combined_gapMinder.tsv", header= T)
+
+data2 <- subset(data1, data1$country=="China")
+data3 <- subset(data1, data1$country=="France") 
+data4 <- subset(data1, data1$country=="Nepal")
+plot(x=data2$year, y=data2$pop, ylim=c(0,1.319e+09), ylab="Population", xlab="Year"
+) 
+points(data2$country["China"])
+
+datafinal <- rbind(data2, data3, data4)
+ggplot(data = datafinal, aes(x=year, y=pop)) + geom_point(aes(colour=country))
+
+ggplot(data = data1, aes(x=year, y=pop)) + geom_point(aes(colour=country))
+```
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
